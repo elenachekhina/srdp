@@ -8,6 +8,7 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.enable_reloading = true
 
+  config.action_dispatch.tld_length = 0
   # Do not eager load code on boot.
   config.eager_load = false
 
@@ -68,4 +69,6 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+  config.hosts << 'org.virtual.localhost:3000'
 end

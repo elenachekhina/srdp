@@ -1,0 +1,32 @@
+/ app/views/shared/_errors.html.slim
+
+
+div.container.mt-4
+  - if resource&.errors.present?
+    div.bg-red-100.p-5.border.border-red-400.rounded-md.shadow
+      div.flex.items-center.justify-between
+        h4.text-red-700.font-bold Error(s) detected:
+        span.bg-red-200.text-red-700.font-semibold.px-3.py-1.rounded = resource.errors.count
+      hr.my-4.border-red-300
+      ul.pl-5.list-disc.list-inside
+        - resource.errors.full_messages.each do |message|
+          li.flex.items-center.mt-2
+            i.fas.fa-exclamation-triangle.text-red-500.mr-2
+            span.text-red-600= message
+
+
+
+  / div class="container mt-4"
+/   - if resource&.errors.present?
+/     div.alert.alert-danger
+/       h4= "#{resource.errors.count} error(s) detected: "
+/       ul
+/         - resource.errors.full_messages.each do |message|
+/           li= message
+/
+/ - if @organization.errors.any?
+/   .bg-red-100.border.border-red-400.text-red-700.px-4.py-3.rounded.mb-6
+/     h3.text-xl.font-bold.mb-2 Error
+/     ul
+/       - @organization.errors.full_messages.each do |message|
+/         li.text-sm = message

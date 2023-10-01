@@ -1,0 +1,19 @@
+/ app/views/shared/_navbar.html.slim
+
+nav.bg-gray-800.p-4
+  .container.mx-auto
+    .flex.justify-between.items-center
+      = link_to "Home", root_path, class: "text-white text-xl font-bold"
+
+      ul.flex
+        - if current_organization
+          li.mr-6
+            = button_to "Sign out", org_logout_path, method: :delete, class: "text-gray-300 hover:text-white"
+        - else
+          li.mr-6
+            = link_to "Sign in", org_login_path, class: "text-gray-300 hover:text-white"
+          li.mr-6
+            = link_to "Sign up", new_org_organization_path, class: "text-gray-300 hover:text-white"
+
+        li.mr-6
+          = link_to "Switch to User Mode", root_url(subdomain: false), class: "text-gray-300 hover:text-white", style: "width: 250px; display: inline-block;"

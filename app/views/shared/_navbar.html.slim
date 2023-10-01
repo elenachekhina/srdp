@@ -1,0 +1,10 @@
+/ app/views/shared/_navbar.html.slim
+
+nav.bg-gray-800.p-4
+  .container.mx-auto
+    .flex.justify-between.items-center
+      = link_to "Home", root_path, class: "text-white text-xl font-bold"
+
+      ul.flex
+        li.mr-6
+          = link_to "Switch to Organization Mode", root_url(subdomain: 'org'), class: "text-gray-300 hover:text-white", style: "width: 250px; display: inline-block;"
