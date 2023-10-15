@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # resources :organizations, only: %w[index show]
@@ -16,7 +18,9 @@ Rails.application.routes.draw do
   constraints subdomain: 'org' do
     namespace :org, path: '/' do
       root to: 'organizations#show'
-      resources :organizations, only: %w[show create new]
+      resources :organizations, only: %w[show create new] do
+        resources :contacts, only: %w[new create edit update destroy show], shallow: true
+      end
 
       controller :sessions do
         get 'login', to: 'sessions#new'
@@ -26,19 +30,15 @@ Rails.application.routes.draw do
     end
   end
 
-
-
-
   # controller :session do
   #   get 'login', to: 'sessions#new'
   #   post 'login', to: 'sessions#create'
   #   delete 'logout', to: 'sessions#destroy'
   # end
 
-
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  get 'up' => 'rails/health#show', as: :rails_health_check
 
   # Defines the root path route ("/")
   # root "articles#index"

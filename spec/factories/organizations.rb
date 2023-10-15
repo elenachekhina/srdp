@@ -5,13 +5,13 @@ FactoryBot.define do
     "Organization #{n}"
   end
 
-  sequence :email do |n|
+  sequence :email_seq do |n|
     "email#{n}@gmail.com"
   end
 
   factory :organization do
     name
-    email
+    email { generate(:email_seq) }
     password { '12345678' }
     password_confirmation { '12345678' }
   end

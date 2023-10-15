@@ -1,6 +1,10 @@
+# frozen_string_literal: true
+
 class Contact < ApplicationRecord
+  CONTACT_TYPES = %w[phone email other].freeze
+
   belongs_to :organization
 
-  validates :website_url, format: { with: URI.regexp, message: "You provided an invalid URL" }, allow_blank: true
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, allow_blank: true
+  validates :type, presence: true
+  validates :value, presence: true
 end

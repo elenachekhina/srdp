@@ -7,13 +7,13 @@
     .grid.grid-cols-1.md:grid-cols-2.gap-6
       .flex-1
         h2.text-xl.font-semibold.mb-2.border-b.pb-2 Contact Information
-        - if @organization.contact
-          ul.text-gray-700.leading-relaxed.list-disc.ml-5
-            = render @organization.contact
-            / li.mb-1 = @organization.email
-            = link_to 'Edit', '#', class: 'text-blue-500 hover:underline mt-4 inline-block'
-        - else
-          = link_to 'Add', '#', class: 'text-blue-500 hover:underline'
+        div id="contacts"
+          - if @organization.contacts
+            = render partial: 'org/contacts/contact', collection: @organization.contacts, as: :contact
+
+          = turbo_frame_tag dom_id(@organization, :add_contact) do
+            = link_to 'Add', new_org_organization_contact_path(@organization), class: 'text-blue-500 hover:underline'
+
       .flex-1
         h2.text-xl.font-semibold.mb-2.border-b.pb-2 Address Information
         - if @organization.address
@@ -62,66 +62,3 @@
           | :
           = 'Some comment'
     = link_to 'See All Comments', '#', class: 'text-blue-500 hover:underline mt-4 inline-block'
-
-
-
-
-
-/ .container.mx-auto.my-20.grid.grid-cols-1.md:grid-cols-2.gap-6
-/   .bg-white.rounded-lg.shadow-lg.p-6
-/     h1.text-3xl.font-bold.mb-4 = @organization.name
-/     .flex.flex-col.md:flex-row.md:space-x-6.mb-4
-/       .flex-1
-/         h2.text-xl.font-semibold.mb-2 Contact Information
-/         - if @organization.contact
-/             ul.text-gray-700.leading-relaxed.list-disc.ml-5
-/               = render @organization.contact
-/               / li.mb-1 = @organization.email
-/               = link_to 'Edit', '#', class: 'text-blue-500 hover:underline'
-/         - else
-/           = link_to 'Add', '#', class: 'text-blue-500 hover:underline'
-/       .flex-1
-/         h2.text-xl.font-semibold.mb-2 Address Information
-/         - if @organization.address
-/           ul.text-gray-700.leading-relaxed.list-disc.ml-5
-/             = render @organization.address
-/             / li.mb-1 = @organization.email
-/             = link_to 'Edit', '#', class: 'text-blue-500 hover:underline'
-/         - else
-/           = link_to 'Add', '#', class: 'text-blue-500 hover:underline'
-/
-/     .mt-10
-/       h2.text-2xl.font-semibold.mb-4 Services
-/       - 3.times do
-/         .bg-white.rounded-lg.shadow-lg.mb-6.p-4
-/           h3.text-xl.font-bold.mb-2 Service Name
-/           p.text-gray-600.mb-2
-/             p Here's a brief description of Service
-/           = link_to 'Edit', '#', class: 'text-blue-500 hover:underline'
-/
-/   .bg-gray-100.rounded-lg.shadow-lg.p-6
-/     h3.text-xl.font-bold.mb-2 Dashboard & Reviews
-/     ul.text-gray-700.list-disc.ml-5
-/       li.mb-2 = link_to 'Dashboard', '#', class: 'hover:underline'
-/       li.mb-2 = link_to 'Srdp', '#', class: 'hover:underline'
-/       span.text-yellow-400.ml-2
-/         | ★★★★☆
-/       li.mb-2 = link_to 'Google', '#', class: 'hover:underline'
-/       span.text-yellow-400.ml-2
-/         | ★★★★☆
-/       li.mb-2 = link_to 'Yandex', '#', class: 'hover:underline'
-/       span.text-yellow-400.ml-2
-/         | ★★★★☆
-/
-/     h3.text-xl.font-bold.mb-2 Timetables & Services
-/     ul.text-gray-700.list-disc.ml-5
-/       li.mb-2 = link_to 'Service Timetable', '#', class: 'hover:underline'
-/
-/     h3.text-xl.font-bold.mb-2 Recent Comments
-/     ul.text-gray-700.list-disc.ml-5
-/       - 3.times do
-/         li.mb-2
-/           span.font-semibold = 'User name'
-/           | :
-/           = 'Some comment'
-/       = link_to 'See All Comments', '#', class: 'text-blue-500 hover:underline'
