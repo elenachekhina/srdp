@@ -1,0 +1,7 @@
+= turbo_stream.update id="address" do
+  - if @organization.address
+    ul.text-gray-700.leading-relaxed.list-disc.ml-5
+      = render @organization.address
+  - else
+    = turbo_frame_tag dom_id(@organization, :add_address) do
+      = link_to 'Add', new_org_organization_address_path(@organization), class: 'text-blue-500 hover:underline'

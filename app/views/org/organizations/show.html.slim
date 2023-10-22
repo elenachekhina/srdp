@@ -16,13 +16,13 @@
 
       .flex-1
         h2.text-xl.font-semibold.mb-2.border-b.pb-2 Address Information
-        - if @organization.address
-          ul.text-gray-700.leading-relaxed.list-disc.ml-5
-            = render @organization.address
-            / li.mb-1 = @organization.email
-            = link_to 'Edit', '#', class: 'text-blue-500 hover:underline mt-4 inline-block'
-        - else
-          = link_to 'Add', '#', class: 'text-blue-500 hover:underline'
+        div id="address"
+          - if @organization.address
+            ul.text-gray-700.leading-relaxed.list-disc.ml-5
+              = render @organization.address
+          - else
+            = turbo_frame_tag dom_id(@organization, :add_address) do
+              = link_to 'Add', new_org_organization_address_path(@organization), class: 'text-blue-500 hover:underline'
 
     .mt-10
       h2.text-2xl.font-semibold.mb-4.border-b.pb-2 Services

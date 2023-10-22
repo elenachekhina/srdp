@@ -2,8 +2,8 @@
 
 class CreateAddresses < ActiveRecord::Migration[7.1]
   def change
-    create_table :addresses do |t|
-      t.belongs_to :organization
+    create_table :addresses, id: :uuid do |t|
+      t.belongs_to :organization, null: false, foreign_key: true, type: :uuid
       t.string :street
       t.string :city
       t.string :state

@@ -7,7 +7,7 @@ module Org
 
     def new
       @contact = @organization.contacts.new
-      render partial: 'org/contacts/form', locals: { organization: @organization, contact: @contact }
+      render partial: 'form', locals: { organization: @organization, contact: @contact }
     end
 
     def create
@@ -23,7 +23,7 @@ module Org
     def show; end
 
     def edit
-      render partial: 'org/contacts/form_edit', locals: { contact: @contact }
+      render partial: 'form_edit', locals: { contact: @contact }
     end
 
     def update

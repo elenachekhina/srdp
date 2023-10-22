@@ -17,7 +17,7 @@ RSpec.describe 'Org::Contacts', type: :request do
     end
 
     it 'renders new view' do
-      expect(response.body).to render_template(partial: 'org/contacts/_form')
+      expect(response.body).to render_template(partial: '_form')
     end
   end
 
@@ -58,7 +58,7 @@ RSpec.describe 'Org::Contacts', type: :request do
     end
 
     it 'renders edit contact form' do
-      expect(response.body).to render_template(partial: 'org/contacts/_form_edit')
+      expect(response.body).to render_template(partial: '_form_edit')
     end
   end
 
