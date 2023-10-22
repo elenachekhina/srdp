@@ -6,7 +6,8 @@ module Org
     before_action :set_contact, only: %w[update edit destroy]
 
     def new
-      @contact = Organization.find(params[:organization_id]).contacts.new
+      @contact = @organization.contacts.new
+      render partial: 'org/contacts/form', locals: { organization: @organization, contact: @contact }
     end
 
     def create
@@ -21,7 +22,9 @@ module Org
 
     def show; end
 
-    def edit; end
+    def edit
+      render partial: 'org/contacts/form_edit', locals: { contact: @contact }
+    end
 
     def update
       if @contact.update(contact_params)
