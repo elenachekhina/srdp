@@ -26,12 +26,12 @@
 
     .mt-10
       h2.text-2xl.font-semibold.mb-4.border-b.pb-2 Services
-      - 3.times do
-        .bg-white.rounded-lg.shadow-lg.mb-6.p-4
-          h3.text-xl.font-bold.mb-2 Service Name
-          p.text-gray-600.mb-2
-            | Here's a brief description of Service
-          = link_to 'Edit', '#', class: 'text-blue-500 hover:underline'
+      div id="services"
+        - if @organization.services
+          = render partial: 'org/services/service', collection: @organization.services, as: :service
+
+        = turbo_frame_tag dom_id(@organization, :add_service) do
+          = link_to 'Add', new_org_organization_service_path(@organization), class: 'text-blue-500 hover:underline'
 
   .bg-gray-100.rounded-lg.shadow-lg.p-6
     h3.text-xl.font-bold.mb-4.border-b.pb-2 Dashboard & Reviews

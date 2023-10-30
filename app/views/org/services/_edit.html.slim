@@ -1,0 +1,26 @@
+= turbo_frame_tag id=dom_id(service) do
+  = form_for service, url: org_service_path(service), html: { class: 'bg-white p-4 rounded-lg shadow-lg' } do |f|
+    .mb-4 id=dom_id(service, :errors)
+      = render 'shared/errors', resource: service
+
+    .mb-4
+      = f.label :name, class: 'block text-sm font-medium text-gray-700'
+      = f.text_field :name, class: 'form-input w-full text-sm p-1 rounded-md shadow-sm text-gray-900 border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block'
+
+    .mb-4
+      = f.label :description, class: 'block text-sm font-medium text-gray-700'
+      = f.text_area :description, class: 'form-input w-full text-sm p-1 rounded-md shadow-sm text-gray-900 border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block'
+
+    .mb-4
+      = f.label :duration, class: 'block text-sm font-medium text-gray-700'
+      = f.text_field :duration, class: 'form-input w-full text-sm p-1 rounded-md shadow-sm text-gray-900 border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block'
+
+    .mb-4
+      = f.label :pricing, class: 'block text-sm font-medium text-gray-700'
+      = f.number_field :pricing, step: '0.01', class: 'form-input w-full text-sm p-1 rounded-md shadow-sm text-gray-900 border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block'
+
+    .mb-4
+      = f.label :currency, class: 'block text-sm font-medium text-gray-700'
+      = f.select(:currency, ['USD', 'EUR', 'INR'], {}, { class: 'form-select w-full text-sm p-1 rounded-md shadow-sm text-gray-900 border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block' })
+
+    = f.submit 'Save', class: 'btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded text-sm'

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       resources :organizations, only: %w[show create new] do
         resources :contacts, only: %w[new create edit update destroy show], shallow: true
         resources :addresses, only: %w[new create edit update destroy show], shallow: true
+        resources :services, only: %w[new create edit update destroy show], shallow: true
       end
 
       controller :sessions do
