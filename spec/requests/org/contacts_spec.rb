@@ -28,7 +28,6 @@ RSpec.describe 'Org::Contacts', type: :request do
           post org_organization_contacts_path(organization,
                                               params: { contact: attributes_for(:contact), format: :turbo_stream }),
                headers: { 'HTTP_HOST' => 'org.localhost' }
-
         end.to change(Contact.all, :count).by(1)
       end
     end
@@ -37,16 +36,16 @@ RSpec.describe 'Org::Contacts', type: :request do
       it 'Does not create a new contact' do
         expect do
           post org_organization_contacts_path(organization,
-                                              params: { contact: attributes_for(:contact, :invalid), format: :turbo_stream }),
+                                              params: { contact: attributes_for(:contact, :invalid),
+                                                        format: :turbo_stream }),
                headers: { 'HTTP_HOST' => 'org.localhost' }
-
         end.not_to change(Contact.all, :count)
       end
     end
   end
 
   describe 'GET #edit' do
-    let(:contact) { create(:contact, organization: organization) }
+    let(:contact) { create(:contact, organization:) }
 
     before do
       get edit_org_contact_path(contact),
@@ -63,13 +62,13 @@ RSpec.describe 'Org::Contacts', type: :request do
   end
 
   describe 'PUT #update' do
-    let(:contact) { create(:contact, organization: organization, type: 'Phone') }
+    let(:contact) { create(:contact, organization:, type: 'Phone') }
 
     context 'With valid attributes' do
       it 'Changes contact' do
         patch org_contact_path(contact,
-                             params: { phone: { type: 'Phone', value: '987654321' }, format: :turbo_stream }),
-            headers: { 'HTTP_HOST' => 'org.localhost' }
+                               params: { phone: { type: 'Phone', value: '987654321' }, format: :turbo_stream }),
+              headers: { 'HTTP_HOST' => 'org.localhost' }
         contact.reload
         expect(contact.value).to eq('987654321')
       end
@@ -88,7 +87,7 @@ RSpec.describe 'Org::Contacts', type: :request do
   end
 
   describe 'DELETE #destroy' do
-    let!(:contact) { create(:contact, organization: organization, type: 'Phone') }
+    let!(:contact) { create(:contact, organization:, type: 'Phone') }
 
     it 'Deletes a contact' do
       expect do

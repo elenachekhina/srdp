@@ -3,8 +3,7 @@
 module Org
   class SessionsController < BaseController
     skip_before_action :authenticate_organization, only: %w[new create]
-    def new
-    end
+    def new; end
 
     def create
       organization = Organization.find_by(email: session_params[:email])

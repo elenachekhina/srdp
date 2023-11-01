@@ -72,4 +72,4 @@ group :test do
   gem 'shoulda-matchers'
 end
 
-gem "faker", "~> 3.2"
+gem 'faker', '~> 3.2'

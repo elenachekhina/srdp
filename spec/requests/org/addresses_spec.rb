@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe "Org::Addresses", type: :request do
+RSpec.describe 'Org::Addresses', type: :request do
   let(:organization) { create(:organization) }
   before { login(organization) }
 
@@ -26,9 +26,8 @@ RSpec.describe "Org::Addresses", type: :request do
       it 'Creates a new address' do
         expect do
           post org_organization_addresses_path(organization,
-                                              params: { address: attributes_for(:address), format: :turbo_stream }),
+                                               params: { address: attributes_for(:address), format: :turbo_stream }),
                headers: { 'HTTP_HOST' => 'org.localhost' }
-
         end.to change(Address.all, :count).by(1)
       end
     end
@@ -37,16 +36,16 @@ RSpec.describe "Org::Addresses", type: :request do
       it 'Does not create a new address' do
         expect do
           post org_organization_addresses_path(organization,
-                                              params: { address: attributes_for(:address, :invalid_address), format: :turbo_stream }),
+                                               params: { address: attributes_for(:address, :invalid_address),
+                                                         format: :turbo_stream }),
                headers: { 'HTTP_HOST' => 'org.localhost' }
-
         end.not_to change(Address.all, :count)
       end
     end
   end
 
   describe 'GET #edit' do
-    let(:address) { create(:address, organization: organization) }
+    let(:address) { create(:address, organization:) }
 
     before do
       get edit_org_address_path(address),
@@ -63,12 +62,13 @@ RSpec.describe "Org::Addresses", type: :request do
   end
 
   describe 'PATCH #update' do
-    let(:address) { create(:address, organization: organization) }
+    let(:address) { create(:address, organization:) }
 
     context 'With valid attr' do
       it 'Updates address' do
         patch org_address_path(address,
-                               params: { address: attributes_for(:address, street: 'new street'), format: :turbo_stream }),
+                               params: { address: attributes_for(:address, street: 'new street'),
+                                         format: :turbo_stream }),
               headers: { 'HTTP_HOST' => 'org.localhost' }
 
         expect(address.reload.street).to eq('new street')
@@ -87,7 +87,7 @@ RSpec.describe "Org::Addresses", type: :request do
   end
 
   describe 'DELETE #destroy' do
-    let!(:address) { create(:address, organization: organization) }
+    let!(:address) { create(:address, organization:) }
 
     it 'Deletes the address' do
       expect do

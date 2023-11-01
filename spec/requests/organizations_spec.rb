@@ -1,8 +1,8 @@
 # frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Organizations', type: :request do
-
   describe 'GET /organizations' do
     it 'return ok status' do
       get organizations_path,

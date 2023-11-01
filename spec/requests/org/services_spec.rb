@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Org::Services", type: :request do
-
+RSpec.describe 'Org::Services', type: :request do
   let(:organization) { create(:organization) }
   before { login(organization) }
 
@@ -27,7 +28,6 @@ RSpec.describe "Org::Services", type: :request do
           post org_organization_services_path(organization,
                                               params: { service: attributes_for(:service), format: :turbo_stream }),
                headers: { 'HTTP_HOST' => 'org.localhost' }
-
         end.to change(Service.all, :count).by(1)
       end
     end
@@ -36,16 +36,16 @@ RSpec.describe "Org::Services", type: :request do
       it 'Does not create a new service' do
         expect do
           post org_organization_services_path(organization,
-                                              params: { service: attributes_for(:service, :invalid_service), format: :turbo_stream }),
+                                              params: { service: attributes_for(:service, :invalid_service),
+                                                        format: :turbo_stream }),
                headers: { 'HTTP_HOST' => 'org.localhost' }
-
         end.not_to change(Service.all, :count)
       end
     end
   end
 
   describe 'GET #edit' do
-    let(:service) { create(:service, organization: organization) }
+    let(:service) { create(:service, organization:) }
 
     before do
       get edit_org_service_path(service),
@@ -62,11 +62,10 @@ RSpec.describe "Org::Services", type: :request do
   end
 
   describe 'PUT #update' do
-    let(:service) { create(:service, organization: organization) }
+    let(:service) { create(:service, organization:) }
 
     context 'With valid attributes' do
       it 'Changes service' do
-
         patch org_service_path(service,
                                params: { service: attributes_for(:service, name: 'New name'), format: :turbo_stream }),
               headers: { 'HTTP_HOST' => 'org.localhost' }
@@ -88,7 +87,7 @@ RSpec.describe "Org::Services", type: :request do
   end
 
   describe 'DELETE #destroy' do
-    let!(:service) { create(:service, organization: organization) }
+    let!(:service) { create(:service, organization:) }
 
     it 'Deletes a service' do
       expect do
@@ -97,5 +96,4 @@ RSpec.describe "Org::Services", type: :request do
       end.to change(Service.all, :count).by(-1)
     end
   end
-  
 end

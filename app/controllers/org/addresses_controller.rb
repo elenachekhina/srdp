@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Org
   class AddressesController < BaseController
     before_action :set_organization, only: %w[new create]

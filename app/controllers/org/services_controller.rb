@@ -1,15 +1,15 @@
+# frozen_string_literal: true
+
 module Org
   class ServicesController < BaseController
-    before_action :set_organization, only: [:index, :new, :create]
-    before_action :set_service, only: [:show, :edit, :update, :destroy]
+    before_action :set_organization, only: %i[index new create]
+    before_action :set_service, only: %i[show edit update destroy]
 
     def index
       @services = @organization.services
     end
 
-    def show
-
-    end
+    def show; end
 
     def new
       @service = @organization.services.build
@@ -59,4 +59,3 @@ module Org
     end
   end
 end
-
