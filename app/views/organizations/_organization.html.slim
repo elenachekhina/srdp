@@ -1,0 +1,4 @@
+.card.bg-white.p-4.rounded-lg.shadow-lg.mb-4
+  h3.text-xl.font-bold.mb-2= organization.name
+  p.text-gray-600.mb-2= organization.description
+  = link_to 'Details', organization_path(organization), class: 'text-blue-500 hover:underline mt-2 inline-block'

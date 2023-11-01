@@ -1,0 +1,13 @@
+= turbo_frame_tag id=dom_id(service) do
+  .show-service-container
+    .bg-white.rounded-lg.shadow-lg.mb-6.p-4
+      h3.text-xl.font-bold.mb-2= service.name
+      p.text-gray-600.mb-2= service.description
+
+      .mb-2
+        span.text-gray-600 Duration:
+        span.text-gray-900= service.duration
+
+      .mb-2
+        span.text-gray-600 Pricing:
+        span.text-gray-900= "#{service.pricing} #{service.currency}"
