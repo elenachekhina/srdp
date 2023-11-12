@@ -39,5 +39,5 @@
           strong Longitude:
           span.ml-2= address.longitude
 
-  = link_to 'Edit', edit_org_address_path(address), class: 'text-blue-500 hover:underline'
+  = link_to 'Edit', edit_org_address_path(address), class: 'link'
   = button_to 'Delete', org_address_path(address), method: :delete, class: 'px-1 py-0.5 text-xs bg-red-500 text-white hover:bg-red-600 rounded-full transition duration-150'

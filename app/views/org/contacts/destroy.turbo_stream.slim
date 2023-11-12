@@ -3,4 +3,4 @@
     = render partial: 'org/contacts/contact', collection: @organization.contacts, as: :contact
 
   = turbo_frame_tag dom_id(@organization, :add_contact) do
-    = link_to 'Add', new_org_organization_contact_path(@organization), class: 'text-blue-500 hover:underline'
+    = link_to 'Add', new_org_organization_contact_path(@organization), class: 'link'

@@ -12,7 +12,7 @@
             = render partial: 'org/contacts/contact', collection: @organization.contacts, as: :contact
 
           = turbo_frame_tag dom_id(@organization, :add_contact) do
-            = link_to 'Add', new_org_organization_contact_path(@organization), class: 'text-blue-500 hover:underline'
+            = link_to 'Add', new_org_organization_contact_path(@organization), class: 'link'
 
       .flex-1
         h2.text-xl.font-semibold.mb-2.border-b.pb-2 Address Information
@@ -22,7 +22,7 @@
               = render @organization.address
           - else
             = turbo_frame_tag dom_id(@organization, :add_address) do
-              = link_to 'Add', new_org_organization_address_path(@organization), class: 'text-blue-500 hover:underline'
+              = link_to 'Add', new_org_organization_address_path(@organization), class: 'link'
 
     .mt-10
       h2.text-2xl.font-semibold.mb-4.border-b.pb-2 Services
@@ -31,7 +31,7 @@
           = render partial: 'org/services/service', collection: @organization.services, as: :service
 
         = turbo_frame_tag dom_id(@organization, :add_service) do
-          = link_to 'Add', new_org_organization_service_path(@organization), class: 'text-blue-500 hover:underline'
+          = link_to 'Add', new_org_organization_service_path(@organization), class: 'link'
 
   .bg-gray-100.rounded-lg.shadow-lg.p-6
     h3.text-xl.font-bold.mb-4.border-b.pb-2 Dashboard & Reviews
@@ -61,4 +61,4 @@
           span.font-semibold = 'User name'
           | :
           = 'Some comment'
-    = link_to 'See All Comments', '#', class: 'text-blue-500 hover:underline mt-4 inline-block'
+    = link_to 'See All Comments', '#', class: 'link mt-4 inline-block'
