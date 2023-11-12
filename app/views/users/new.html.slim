@@ -1,0 +1,25 @@
+.container.mx-auto.my-20.max-w-md
+  h1.text-3xl.font-semibold.mb-8 Sign up
+  = form_for @user, html: { class: 'bg-white p-6 rounded-lg shadow-lg' } do |f|
+    .mb-4 id=dom_id(@user, :errors)
+      = render 'shared/errors', resource: @user
+
+    .mb-4
+      = f.label :user_name, 'User name', class: 'block text-sm font-medium text-gray-600 mb-2'
+      = f.text_field :user_name, class: 'mt-1 p-2 w-full border rounded-md'
+
+    .mb-4
+      = f.label :email, 'Email', class: 'block text-sm font-medium text-gray-600 mb-2'
+      = f.text_field :email, class: 'mt-1 p-2 w-full border rounded-md'
+
+    .mb-4
+      = f.label :password, 'Password', class: 'block text-sm font-medium text-gray-600 mb-2'
+      = f.password_field :password, class: 'mt-1 p-2 w-full border rounded-md'
+
+    .mb-4
+      = f.label :password_confirmation, 'Confirm Password', class: 'block text-sm font-medium text-gray-600 mb-2'
+      = f.password_field :password_confirmation, class: 'mt-1 p-2 w-full border rounded-md'
+
+    .flex.items-center.justify-between
+      = f.submit 'Sign up', class: 'bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-5 rounded-md focus:outline-none focus:shadow-outline'
+      = link_to 'Cancel', root_path, class: 'text-gray-600 hover:text-gray-800 underline'
