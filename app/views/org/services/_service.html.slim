@@ -1,0 +1,17 @@
+= turbo_frame_tag id=dom_id(service) do
+  .show-service-container
+    .bg-white.rounded-lg.shadow-lg.mb-6.p-4
+      h3.text-xl.font-bold.mb-2= service.name
+      p.text-gray-600.mb-2= service.description
+
+      .mb-2
+        span.text-gray-600 Duration:
+        span.text-gray-900= service.duration
+
+      .mb-2
+        span.text-gray-600 Pricing:
+        span.text-gray-900= "#{service.pricing} #{service.currency}"
+
+      .flex.justify-between.items-center
+        = link_to 'Edit', edit_org_service_path(service), class: 'text-blue-500 hover:underline'
+        = button_to 'Delete', org_service_path(service), method: :delete, class: 'text-blue-500 hover:underline'

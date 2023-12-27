@@ -1,0 +1,5 @@
+= turbo_frame_tag id=dom_id(contact) do
+  .flex.items-center.justify-between
+    = render contact
+
+    = button_to 'X', org_contact_path(contact), method: :delete, class: 'px-1 py-0.5 text-xs bg-red-500 text-white hover:bg-red-600 rounded-full transition duration-150'

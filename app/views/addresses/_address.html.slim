@@ -1,0 +1,40 @@
+= turbo_frame_tag id=dom_id(address) do
+  .container.address-show
+    .row
+      .col-md-6
+        .field
+          strong Street:
+          span.ml-2= address.street
+  
+      .col-md-6
+        .field
+          strong City:
+          span.ml-2= address.city
+  
+    .row
+      .col-md-6
+        .field
+          strong State:
+          span.ml-2= address.state
+  
+      .col-md-6
+        .field
+          strong Postal Code:
+          span.ml-2= address.postal_code
+  
+    .row
+      .col-md-6
+        .field
+          strong Country:
+          span.ml-2= address.country
+  
+    .row
+      .col-md-6
+        .field
+          strong Latitude:
+          span.ml-2= address.latitude
+  
+      .col-md-6
+        .field
+          strong Longitude:
+          span.ml-2= address.longitude
