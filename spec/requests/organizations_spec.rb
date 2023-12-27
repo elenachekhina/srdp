@@ -19,6 +19,7 @@ RSpec.describe 'Organizations', type: :request do
 
   describe 'GET /organizations/:id' do
     let(:organization) { create(:organization) }
+    let!(:address) { create(:address, organization:) }
 
     it 'return ok status' do
       get(organization_path(organization), headers:)

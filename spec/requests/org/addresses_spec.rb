@@ -57,7 +57,7 @@ RSpec.describe 'Org::Addresses', type: :request do
     end
 
     it 'renders edit address form' do
-      expect(response.body).to render_template('org/addresses/_form_edit')
+      expect(response.body).to render_template('org/addresses/_edit')
     end
   end
 

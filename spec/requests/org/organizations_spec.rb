@@ -4,6 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'Org::Organizations', type: :request do
   let(:organization) { create(:organization) }
+  let!(:address) { create(:address, organization:) }
 
   describe 'GET #show' do
     context 'when authenticated' do

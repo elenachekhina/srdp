@@ -18,6 +18,10 @@
   .link {
     @apply text-blue-500 hover:underline;
   }
+
+  .text-field--simple {
+    @apply form-input w-full text-sm p-1 rounded-md shadow-sm text-gray-900 border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block;
+  }
 }
 
 

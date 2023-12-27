@@ -34,31 +34,34 @@
           = link_to 'Add', new_org_organization_service_path(@organization), class: 'link'
 
   .bg-gray-100.rounded-lg.shadow-lg.p-6
-    h3.text-xl.font-bold.mb-4.border-b.pb-2 Dashboard & Reviews
-    ul.text-gray-700.list-disc.ml-5
-      li.mb-2
-        = link_to 'Dashboard', '#', class: 'hover:underline'
-        span.text-yellow-400.ml-2 ★★★★☆
-      li.mb-2
-        = link_to 'Srdp', '#', class: 'hover:underline'
-        span.text-yellow-400.ml-2 ★★★★☆
-      li.mb-2
-        = link_to 'Google', '#', class: 'hover:underline'
-        span.text-yellow-400.ml-2 ★★★★☆
-      li.mb-2
-        = link_to 'Yandex', '#', class: 'hover:underline'
-        span.text-yellow-400.ml-2 ★★★★☆
-
-    h3.text-xl.font-bold.mb-4.border-b.pb-2 Timetables & Services
-    ul.text-gray-700.list-disc.ml-5
-      li.mb-2
-        = link_to 'Service Timetable', '#', class: 'hover:underline'
-
-    h3.text-xl.font-bold.mb-4.border-b.pb-2 Recent Comments
-    ul.text-gray-700.list-disc.ml-5
-      - 3.times do
-        li.mb-2
-          span.font-semibold = 'User name'
-          | :
-          = 'Some comment'
-    = link_to 'See All Comments', '#', class: 'link mt-4 inline-block'
+    div id=dom_id(@organization, :map)
+      = render 'org/addresses/location', organization: @organization
+    / = render 'org/addresses/location', organization: @organization
+    / h3.text-xl.font-bold.mb-4.border-b.pb-2 Dashboard & Reviews
+    / ul.text-gray-700.list-disc.ml-5
+    /   li.mb-2
+    /     = link_to 'Dashboard', '#', class: 'hover:underline'
+    /     span.text-yellow-400.ml-2 ★★★★☆
+    /   li.mb-2
+    /     = link_to 'Srdp', '#', class: 'hover:underline'
+    /     span.text-yellow-400.ml-2 ★★★★☆
+    /   li.mb-2
+    /     = link_to 'Google', '#', class: 'hover:underline'
+    /     span.text-yellow-400.ml-2 ★★★★☆
+    /   li.mb-2
+    /     = link_to 'Yandex', '#', class: 'hover:underline'
+    /     span.text-yellow-400.ml-2 ★★★★☆
+    /
+    / h3.text-xl.font-bold.mb-4.border-b.pb-2 Timetables & Services
+    / ul.text-gray-700.list-disc.ml-5
+    /   li.mb-2
+    /     = link_to 'Service Timetable', '#', class: 'hover:underline'
+    /
+    / h3.text-xl.font-bold.mb-4.border-b.pb-2 Recent Comments
+    / ul.text-gray-700.list-disc.ml-5
+    /   - 3.times do
+    /     li.mb-2
+    /       span.font-semibold = 'User name'
+    /       | :
+    /       = 'Some comment'
+    / = link_to 'See All Comments', '#', class: 'link mt-4 inline-block'

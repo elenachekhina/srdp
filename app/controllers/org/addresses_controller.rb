@@ -7,7 +7,7 @@ module Org
 
     def new
       @address = @organization.build_address
-      render partial: 'form', locals: { address: @address, organization: @organization }
+      render partial: 'new', locals: { address: @address, organization: @organization }
     end
 
     def create
@@ -21,7 +21,7 @@ module Org
     end
 
     def edit
-      render partial: 'form_edit', locals: { address: @address }
+      render partial: 'edit', locals: { address: @address }
     end
 
     def update
@@ -49,7 +49,8 @@ module Org
     end
 
     def address_params
-      params.require(:address).permit(:street, :city, :state, :postal_code, :country, :latitude, :longitude)
+      params.require(:address).permit(:house_number, :street, :district, :city, :state, :postal_code, :country,
+                                      :latitude_ovr, :longitude_ovr)
     end
   end
 end

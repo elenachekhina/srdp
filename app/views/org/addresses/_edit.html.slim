@@ -1,0 +1,9 @@
+= turbo_frame_tag id=dom_id(address) do
+  = form_with model: [:org, address], html: { class: 'bg-white p-4 rounded-lg shadow-lg', id: dom_id(address, :edit), data: { controller: "edit-form" } } do |f|
+    .mb-4 id=dom_id(address, :errors)
+      = render 'shared/errors', resource: address
+
+    = render 'org/addresses/form', f: f
+
+    .actions
+      = f.submit 'Save', class: 'btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded text-sm'
