@@ -76,3 +76,5 @@ gem 'faker', '~> 3.2'
 gem 'geocoder'
 gem 'image_processing', '>= 1.2'
 gem 'ruby-vips'
+
+gem "meilisearch", "~> 0.26.0"

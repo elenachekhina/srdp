@@ -22,7 +22,8 @@
           = render partial: 'services/service', collection: @organization.services, as: :service
 
   .bg-gray-100.rounded-lg.shadow-lg.p-6
-    = render 'location', organization: @organization
+    - if @organization.address
+      = render 'location', organization: @organization
     / h3.text-xl.font-bold.mb-4.border-b.pb-2 Dashboard & Reviews
     / ul.text-gray-700.list-disc.ml-5
     /   li.mb-2
