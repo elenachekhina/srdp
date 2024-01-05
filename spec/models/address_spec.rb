@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require_relative 'concerns/searchable'
 
 RSpec.describe Address, type: :model do
   describe 'Validations' do
@@ -9,6 +10,11 @@ RSpec.describe Address, type: :model do
     it { should validate_presence_of(:state) }
     it { should validate_presence_of(:postal_code) }
     it { should validate_presence_of(:country) }
+  end
+
+  it_behaves_like 'Searchable' do
+    let(:object) { create(described_class.name.downcase.to_sym) }
+    let(:update_dict) { { street: 'New street' } }
   end
 
   describe 'Associations' do

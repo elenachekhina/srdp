@@ -2,6 +2,7 @@
 
 class Address < ApplicationRecord
   include Geocoder::Model::ActiveRecord
+  include Searchable
 
   belongs_to :organization
 
@@ -21,5 +22,9 @@ class Address < ApplicationRecord
 
   def longitude
     self[:longitude_ovr] || self[:longitude]
+  end
+
+  def searchable_fields
+    self.slice(:id, :street, :city, :district)
   end
 end
