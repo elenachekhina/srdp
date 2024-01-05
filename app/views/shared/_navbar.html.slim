@@ -1,7 +1,9 @@
 nav.bg-gray-800.p-4
   .container.mx-auto
     .flex.justify-between.items-center
-      = link_to "Home", root_path, class: "text-white text-xl font-bold"
+      .flex.items-center
+        = link_to "Home", root_path, class: "text-white text-xl font-bold mr-6"
+        = render "search/search"
 
       ul.flex
         - if current_user
