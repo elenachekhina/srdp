@@ -7,14 +7,14 @@ class SearchableCreator
   def call
     obj = @klass.new(@params)
     if obj.save
-      perform_post_create_actions(obj)
+      create_meilisearch_document(obj)
     end
     obj
   end
 
   private
 
-  def perform_post_create_actions(obj)
+  def create_meilisearch_document(obj)
     MeilisearchService.new.create(obj)
   end
 end
