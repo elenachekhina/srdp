@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Org::Addresses', type: :request do
+  include_context "mocked MeilisearchService"
+
   let(:organization) { create(:organization) }
   before { login(organization) }
 

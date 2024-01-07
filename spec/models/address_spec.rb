@@ -13,8 +13,8 @@ RSpec.describe Address, type: :model do
   end
 
   it_behaves_like 'Searchable' do
-    let(:object) { create(described_class.name.downcase.to_sym) }
-    let(:update_dict) { { street: 'New street' } }
+    let(:klass) { described_class }
+    let(:update_value) { { street: 'New street' } }
   end
 
   describe 'Associations' do

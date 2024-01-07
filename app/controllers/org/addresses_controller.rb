@@ -11,9 +11,9 @@ module Org
     end
 
     def create
-      @address = @organization.build_address(address_params)
+      @address = SearchableCreator.new(Address, address_params.merge(organization: @organization)).call
 
-      if @address.save
+      if @address.persisted?
         render :create
       else
         render :new
