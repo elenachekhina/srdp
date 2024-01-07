@@ -3,38 +3,50 @@
     .row
       .col-md-6
         .field
+          strong House number:
+          span.ml-2= address.house_number
+
+      .col-md-6
+        .field
           strong Street:
           span.ml-2= address.street
-  
+
+    .row
+      .col-md-6
+        .field
+          strong District:
+          span.ml-2= address.district
+
       .col-md-6
         .field
           strong City:
           span.ml-2= address.city
-  
+
     .row
       .col-md-6
         .field
           strong State:
           span.ml-2= address.state
-  
+
       .col-md-6
         .field
           strong Postal Code:
           span.ml-2= address.postal_code
-  
+
     .row
       .col-md-6
         .field
           strong Country:
           span.ml-2= address.country
-  
-    .row
-      .col-md-6
-        .field
-          strong Latitude:
-          span.ml-2= address.latitude
-  
-      .col-md-6
-        .field
-          strong Longitude:
-          span.ml-2= address.longitude
+
+    - if address.latitude_ovr && address.longitude_ovr
+      .row
+        .col-md-6
+          .field
+            strong Latitude:
+            span.ml-2= address.latitude_ovr
+
+        .col-md-6
+          .field
+            strong Longitude:
+            span.ml-2= address.longitude_ovr

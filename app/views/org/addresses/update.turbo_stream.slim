@@ -1,2 +1,5 @@
 = turbo_stream.replace dom_id(@address) do
   = render 'org/addresses/address', address: @address
+
+= turbo_stream.update dom_id(@address.organization, :map) do
+  = render 'org/addresses/location', organization: @address.organization

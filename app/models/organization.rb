@@ -2,6 +2,7 @@
 
 class Organization < ApplicationRecord
   has_secure_password
+  include Searchable
 
   has_one_attached :logo
 
@@ -11,4 +12,5 @@ class Organization < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: { case_sensitive: false }
+
 end

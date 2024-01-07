@@ -17,9 +17,9 @@ module Org
     end
 
     def create
-      @service = @organization.services.build(service_params)
+      @service = SearchableCreator.new(Service, service_params.merge(organization: @organization)).call
 
-      if @service.save
+      if @service.persisted?
         render :create
       else
         render :new

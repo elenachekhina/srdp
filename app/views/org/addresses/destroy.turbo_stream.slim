@@ -4,4 +4,4 @@
       = render @organization.address
   - else
     = turbo_frame_tag dom_id(@organization, :add_address) do
-      = link_to 'Add', new_org_organization_address_path(@organization), class: 'text-blue-500 hover:underline'
+      = link_to 'Add', new_org_organization_address_path(@organization), class: 'link'

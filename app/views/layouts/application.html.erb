@@ -9,6 +9,7 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <script async src=<%= "https://maps.googleapis.com/maps/api/js?key=#{google_maps_api_key}&callback=console.debug&libraries=maps,marker&v=beta" %>></script>
   </head>
 
   <body>

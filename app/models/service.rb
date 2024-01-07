@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Service < ApplicationRecord
+  include Searchable
+
   belongs_to :organization
 
   validates :name, presence: true

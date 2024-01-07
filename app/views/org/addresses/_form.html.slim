@@ -1,30 +1,28 @@
-= turbo_frame_tag id=dom_id(organization, :add_address) do
-  = form_with model: [:org, organization, address], html: { class: 'bg-white p-4 rounded-lg shadow-lg' } do |f|
-    .mb-4 id='errors_address'
-      = render 'shared/errors', resource: address
-
-    .mb-4
-      .field
-        = f.label :street
-        = f.text_field :street, class: 'form-input w-full text-sm p-1 rounded-md shadow-sm text-gray-900 border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block'
-      .field
-        = f.label :city
-        = f.text_field :city, class: 'form-input w-full text-sm p-1 rounded-md shadow-sm text-gray-900 border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block'
-      .field
-        = f.label :state
-        = f.text_field :state, class: 'form-input w-full text-sm p-1 rounded-md shadow-sm text-gray-900 border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block'
-      .field
-        = f.label :postal_code
-        = f.text_field :postal_code, class: 'form-input w-full text-sm p-1 rounded-md shadow-sm text-gray-900 border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block'
-      .field
-        = f.label :country
-        = f.text_field :country, class: 'form-input w-full text-sm p-1 rounded-md shadow-sm text-gray-900 border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block'
-      .field
-        = f.label :latitude
-        = f.text_field :latitude, class: 'form-input w-full text-sm p-1 rounded-md shadow-sm text-gray-900 border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block'
-      .field
-        = f.label :longitude
-        = f.text_field :longitude, class: 'form-input w-full text-sm p-1 rounded-md shadow-sm text-gray-900 border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block'
-
-    .actions
-      = f.submit 'Save', class: 'btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded text-sm'
+.mb-4
+  .field
+    = f.label :house_number
+    = f.text_field :house_number, class: 'text-field--simple'
+  .field
+    = f.label :street
+    = f.text_field :street, class: 'text-field--simple'
+  .field
+    = f.label :district
+    = f.text_field :district, class: 'text-field--simple'
+  .field
+    = f.label :city
+    = f.text_field :city, class: 'text-field--simple'
+  .field
+    = f.label :state
+    = f.text_field :state, class: 'text-field--simple'
+  .field
+    = f.label :postal_code
+    = f.text_field :postal_code, class: 'text-field--simple'
+  .field
+    = f.label :country
+    = f.text_field :country, class: 'text-field--simple'
+  .field
+    = f.label :latitude
+    = f.text_field :latitude_ovr, class: 'text-field--simple', id: "latitude"
+  .field
+    = f.label :longitude
+    = f.text_field :longitude_ovr, class: 'text-field--simple', id: "longitude"

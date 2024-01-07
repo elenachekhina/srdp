@@ -13,5 +13,5 @@
         span.text-gray-900= "#{service.pricing} #{service.currency}"
 
       .flex.justify-between.items-center
-        = link_to 'Edit', edit_org_service_path(service), class: 'text-blue-500 hover:underline'
-        = button_to 'Delete', org_service_path(service), method: :delete, class: 'text-blue-500 hover:underline'
+        = link_to 'Edit', edit_org_service_path(service), class: 'link'
+        = button_to 'Delete', org_service_path(service), method: :delete, class: 'link'

@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Org::Addresses', type: :request do
+  include_context "mocked MeilisearchService"
+
   let(:organization) { create(:organization) }
   before { login(organization) }
 
@@ -57,7 +59,7 @@ RSpec.describe 'Org::Addresses', type: :request do
     end
 
     it 'renders edit address form' do
-      expect(response.body).to render_template('org/addresses/_form_edit')
+      expect(response.body).to render_template('org/addresses/_edit')
     end
   end
 
