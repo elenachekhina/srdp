@@ -74,6 +74,8 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
+    addressable (2.8.6)
+      public_suffix (>= 2.0.2, < 6.0)
     base64 (0.1.1)
     bcrypt (3.1.19)
     bigdecimal (3.1.4)
@@ -81,6 +83,7 @@ GEM
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
+    childprocess (5.0.0)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
     crass (1.0.6)
@@ -91,7 +94,6 @@ GEM
     diff-lcs (1.5.0)
     drb (2.1.1)
       ruby2_keywords
-    error_highlight (0.5.1)
     erubi (1.12.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
@@ -119,6 +121,11 @@ GEM
     irb (1.8.1)
       rdoc
       reline (>= 0.3.8)
+    launchy (3.0.1)
+      addressable (~> 2.8)
+      childprocess (~> 5.0)
+    letter_opener (1.10.0)
+      launchy (>= 2.2, < 4)
     loofah (2.21.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -132,6 +139,7 @@ GEM
       httparty (>= 0.17.1, < 0.22.0)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
+    mini_portile2 (2.8.6)
     minitest (5.20.0)
     msgpack (1.7.2)
     multi_xml (0.6.0)
@@ -146,15 +154,13 @@ GEM
     net-smtp (0.4.0)
       net-protocol
     nio4r (2.5.9)
-    nokogiri (1.15.4-aarch64-linux)
-      racc (~> 1.4)
-    nokogiri (1.15.4-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.15.4-x86_64-linux)
+    nokogiri (1.15.4)
+      mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     pg (1.5.4)
     psych (5.1.0)
       stringio
+    public_suffix (5.0.5)
     puma (6.4.0)
       nio4r (~> 2.0)
     racc (1.7.1)
@@ -283,12 +289,12 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap
   debug
-  error_highlight (>= 0.4.0)
   factory_bot_rails
   faker (~> 3.2)
   geocoder
   image_processing (>= 1.2)
   importmap-rails
+  letter_opener
   meilisearch (~> 0.26.0)
   pg
   puma (>= 5.0)
@@ -307,7 +313,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 3.2.2p53
+   ruby 3.3.0p0
 
 BUNDLED WITH
    2.4.19
