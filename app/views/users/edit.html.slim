@@ -1,0 +1,40 @@
+.container.mx-auto.my-20.grid.grid-cols-1.md:grid-cols-2.gap-6
+  .bg-white.rounded-lg.shadow-lg.p-6
+    h1.text-3xl.font-bold.mb-4 Edit User
+    = form_with model: @user, multipart: true do |form|
+      .mb-4 id=dom_id(@user, :errors)
+        = render 'shared/errors', resource: @user
+
+      .grid.grid-cols-1.md:grid-cols-2.gap-6
+        .flex-1
+          h2.text-xl.font-semibold.mb-2.border-b.pb-2 Personal Information
+          .field.mb-4
+            = form.label :user_name, class: 'block'
+            = form.text_field :user_name, class: 'mt-1 block w-full'
+
+          .field.mb-4
+            = form.label :first_name, class: 'block'
+            = form.text_field :first_name, class: 'mt-1 block w-full'
+
+          .field.mb-4
+            = form.label :last_name, class: 'block'
+            = form.text_field :last_name, class: 'mt-1 block w-full'
+
+          .field.mb-4
+            = form.label :date_of_birth, class: 'block'
+            = form.date_field :date_of_birth, class: 'mt-1 block w-full'
+
+        .flex-1
+          h2.text-xl.font-semibold.mb-2.border-b.pb-2 Profile Picture
+          .field.mb-4
+            = form.label :avatar, 'Avatar', class: 'block'
+            = form.file_field :avatar, class: 'mt-1 block w-full'
+
+          - if @user.avatar.attached?
+            .mt-4
+              = image_tag @user.avatar, class: 'rounded-full h-32 w-32'
+
+      .actions
+        = form.submit 'Update User', class: 'button--submit'
+
+    = link_to 'Back', user_path(@user), class: 'button--cancel'

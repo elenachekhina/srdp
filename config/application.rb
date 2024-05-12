@@ -25,6 +25,10 @@ module Srdp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
+    config.generators do |g|
+      g.orm :active_record, primary_key_type: :uuid
+    end
+
     # Please, see https://guides.rubyonrails.org/autoloading_and_reloading_constants.html#config-autoload-lib-ignore.
     config.autoload_lib(ignore: %w[assets tasks])
 

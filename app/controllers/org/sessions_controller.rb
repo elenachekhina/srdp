@@ -11,7 +11,6 @@ module Org
       if organization&.authenticate(session_params[:password])
         session[:organization_id] = organization.id
         redirect_to org_organization_path(organization), notice: 'Successfully signed in!'
-
       else
         render :new
       end

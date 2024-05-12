@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   constraints subdomain: false do
     root to: 'organizations#index'
     resources :organizations, only: %w[index show]
+    resources :users
+    resources :search, only: %w[index]
 
     controller :sessions do
       get 'login', to: 'sessions#new'

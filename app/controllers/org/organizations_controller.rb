@@ -13,9 +13,9 @@ module Org
     end
 
     def create
-      @organization = Organization.new(organization_params)
+      @organization = SearchableCreator.new(Organization, organization_params).call
 
-      if @organization.save
+      if @organization.persisted?
         session[:organization_id] = @organization.id
         redirect_to root_path, notice: 'Successfully signed up!'
       else
