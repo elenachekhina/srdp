@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_14_162150) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_12_165032) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -77,6 +77,19 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_14_162150) do
     t.string "password_digest", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "rates", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "rateable_type", null: false
+    t.uuid "rateable_id", null: false
+    t.string "rater_type", null: false
+    t.uuid "rater_id", null: false
+    t.string "comment"
+    t.integer "value", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_rates_on_rateable"
+    t.index ["rater_type", "rater_id"], name: "index_rates_on_rater"
   end
 
   create_table "services", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
