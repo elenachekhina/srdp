@@ -1,0 +1,20 @@
+= form_with(model: @rate, local: true) do |f|
+  .form-group
+    label.text-xl.font-bold.mb-2 Rating
+    .star-rating
+      = f.radio_button :value, 5, id: 'star5'
+      = f.label :value, '★', for: 'star5'
+      = f.radio_button :value, 4, id: 'star4'
+      = f.label :value, '★', for: 'star4'
+      = f.radio_button :value, 3, id: 'star3'
+      = f.label :value, '★', for: 'star3'
+      = f.radio_button :value, 2, id: 'star2'
+      = f.label :value, '★', for: 'star2'
+      = f.radio_button :value, 1, id: 'star1'
+      = f.label :value, '★', for: 'star1'
+
+  .form-group
+    = f.label :comment, class: 'text-xl.font-bold.mb-2'
+    = f.text_area :comment, class: 'form-control mb-2', rows: 5
+
+  = f.submit 'Submit', class: 'btn btn-primary'

@@ -22,7 +22,26 @@
   .text-field--simple {
     @apply form-input w-full text-sm p-1 rounded-md shadow-sm text-gray-900 border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block;
   }
+
+  .star-rating {
+    @apply flex flex-row-reverse text-2xl;
+  }
+
+  .star-rating input {
+    @apply hidden;
+  }
+
+  .star-rating label {
+    @apply cursor-pointer text-gray-400;
+  }
+
+  .star-rating input:checked ~ label,
+  .star-rating input:checked ~ label ~ label {
+    @apply text-yellow-500;
+  }
+
+  .star-rating label:hover,
+  .star-rating label:hover ~ label {
+    @apply text-yellow-500;
+  }
 }
-
-
-

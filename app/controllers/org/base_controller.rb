@@ -19,5 +19,7 @@ module Org
 
       redirect_to org_login_path
     end
+
+    alias_method :current_user, :current_organization
   end
 end
