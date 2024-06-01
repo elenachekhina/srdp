@@ -26,11 +26,20 @@
       div id=[@organization, "rates"]
         - if @organization.rates
           = render partial: 'rates/rate', collection: @organization.rates, as: :rate
-        = link_to 'Add review', new_organization_rate_path(@organization), class: 'link'
+
+        = turbo_frame_tag dom_id(@organization, :add_rate) do
+          = link_to 'Add review', new_organization_rate_path(@organization), class: 'link'
 
   .bg-gray-100.rounded-lg.shadow-lg.p-6
     - if @organization.address
       = render 'location', organization: @organization
+
+
+
+
+
+
+
     / h3.text-xl.font-bold.mb-4.border-b.pb-2 Dashboard & Reviews
     / ul.text-gray-700.list-disc.ml-5
     /   li.mb-2

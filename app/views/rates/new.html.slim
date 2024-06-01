@@ -1,21 +1,7 @@
-= form_for [@rateable, @rate], html: { local: true, class: 'max-w-xl mx-auto p-4 bg-white rounded-lg shadow-md' } do |f|
-  .mb-4 id=dom_id(@rate, :errors)
-    = render 'shared/errors', resource: @rate
+= turbo_frame_tag id=dom_id(@rateable, :add_rate)
+  = form_for [@rateable, @rate], html: { local: true, class: 'p-4 bg-white rounded-lg shadow-md' } do |f|
+    .mb-4 id=dom_id(@rate, :errors)
+      = render 'shared/errors', resource: @rate
 
-  .form-group.mb-4
-    .star-rating.flex.justify-between.items-center
-      = f.radio_button :value, 5, id: 'star5'
-      = f.label '★', for: 'star5', class: 'cursor-pointer'
-      = f.radio_button :value, 4, id: 'star4'
-      = f.label '★', for: 'star4', class: 'cursor-pointer'
-      = f.radio_button :value, 3, id: 'star3'
-      = f.label '★', for: 'star3', class: 'cursor-pointer'
-      = f.radio_button :value, 2, id: 'star2'
-      = f.label '★', for: 'star2', class: 'cursor-pointer'
-      = f.radio_button :value, 1, id: 'star1'
-      = f.label '★', for: 'star1', class: 'cursor-pointer'
-
-  .form-group.mb-4
-    = f.text_area :comment, class: 'w-full p-2 border border-gray-300 rounded-lg', rows: 5, placeholder: 'Write a review...'
-
-  = f.submit 'Submit', class: 'mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700'
+    = render 'rates/form', form: f
+    = link_to 'Cancel', @rateable, class: 'link'

@@ -1,0 +1,17 @@
+.form-group
+  .star-rating
+    = form.radio_button :value, 5, id: 'star5'
+    = form.label :value, '★', for: 'star5'
+    = form.radio_button :value, 4, id: 'star4'
+    = form.label :value, '★', for: 'star4'
+    = form.radio_button :value, 3, id: 'star3'
+    = form.label :value, '★', for: 'star3'
+    = form.radio_button :value, 2, id: 'star2'
+    = form.label :value, '★', for: 'star2'
+    = form.radio_button :value, 1, id: 'star1'
+    = form.label :value, '★', for: 'star1'
+
+  .form-group
+    = form.text_area :comment, class: 'form-control mb-2', rows: 2, placeholder: 'Write your review here'
+
+  = form.submit 'Submit', class: 'btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded text-sm'
