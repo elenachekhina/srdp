@@ -36,3 +36,5 @@
 
 .idea
 .env
+
+/config/credentials/production.key
