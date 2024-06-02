@@ -38,3 +38,6 @@
 .env
 
 /config/credentials/production.key
+/node_modules/*
+/package-lock.json
+/package.json
