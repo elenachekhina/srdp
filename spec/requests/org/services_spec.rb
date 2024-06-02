@@ -6,7 +6,7 @@ RSpec.describe 'Org::Services', type: :request do
   include_context "mocked MeilisearchService"
 
   let(:organization) { create(:organization) }
-  before { login(organization) }
+  before { org_login(organization) }
 
   describe 'GET #new' do
     before do

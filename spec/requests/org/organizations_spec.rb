@@ -11,7 +11,7 @@ RSpec.describe 'Org::Organizations', type: :request do
   describe 'GET #show' do
     context 'when authenticated' do
       before do
-        login(organization)
+        org_login(organization)
         get org_organization_path(organization),
             headers: { 'HTTP_HOST' => 'org.localhost' }
       end

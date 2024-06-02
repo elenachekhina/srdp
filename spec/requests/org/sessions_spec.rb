@@ -47,7 +47,7 @@ RSpec.describe 'Org::Sessions', type: :request do
 
   describe 'DELETE #destroy' do
     before do
-      login(organization)
+      org_login(organization)
       delete org_logout_path(organization),
              headers: { 'HTTP_HOST' => 'org.localhost' }
     end
