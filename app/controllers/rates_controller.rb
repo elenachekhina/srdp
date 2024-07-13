@@ -11,7 +11,6 @@ class RatesController < ApplicationController
   end
 
   def create
-    puts current_user
     @rate = @rateable.rates.build(rate_params)
 
     authorize! @rate
