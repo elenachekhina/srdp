@@ -1,6 +1,7 @@
 class MeilisearchService
   def initialize
     puts "Rails.env.to_sym: #{Rails.env.to_sym}"
+    puts "Rails.application.credentials[Rails.env.to_sym]: #{Rails.application.credentials[Rails.env.to_sym]}"
     master_key = Rails.application.credentials[Rails.env.to_sym][:meilisearch][:master_key]
     @client = MeiliSearch::Client.new('http://localhost:7700', master_key)
   end
