@@ -1,0 +1,7 @@
+= turbo_frame_tag id=dom_id(@rateable, :add_rate)
+  = form_for [@rateable, @rate], html: { local: true, class: 'p-4 bg-white rounded-lg shadow-md' } do |f|
+    .mb-4 id=dom_id(@rate, :errors)
+      = render 'shared/errors', resource: @rate
+
+    = render 'rates/form', form: f
+    = link_to 'Cancel', @rateable, class: 'link'

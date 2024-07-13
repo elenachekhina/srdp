@@ -1,0 +1,6 @@
+.card.bg-white.p-4.rounded-lg.shadow-lg.mb-4
+  .flex.justify-between.items-center
+    h6.text-lg.font-bold.mb-2= rate.rater.user_name
+    .flex.items-center
+      .mr-1.5 = "\u{2B50}" * rate.value
+  p.text-gray-600.mb-2= rate.comment

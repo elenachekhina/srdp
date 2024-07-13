@@ -4,11 +4,16 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # resources :organizations, only: %w[index show]
 
+  concern :rateable do
+    resources :rates
+  end
+
   constraints subdomain: false do
     root to: 'organizations#index'
-    resources :organizations, only: %w[index show]
+    resources :organizations, concerns: %i[rateable], only: %w[index show]
     resources :users
     resources :search, only: %w[index]
+    resources :rates
 
     controller :sessions do
       get 'login', to: 'sessions#new'

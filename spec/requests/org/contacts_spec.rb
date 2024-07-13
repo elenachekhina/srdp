@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'Org::Contacts', type: :request do
   let(:organization) { create(:organization) }
-  before { login(organization) }
+  before { org_login(organization) }
 
   describe 'GET #new' do
     before do
