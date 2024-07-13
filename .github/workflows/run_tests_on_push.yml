@@ -39,6 +39,8 @@ jobs:
       # Add or replace test runners here
       - name: Run tests
         run: bin/rake
+        env:
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
 
   lint:
     runs-on: ubuntu-latest
